@@ -1,0 +1,20 @@
+#cloud-config
+
+sources:
+
+package_upgrade: true
+packages:
+  - nginx
+  - nodejs
+  - npm
+
+runcmd:
+  - service nginx restart
+  - cd "/home/azureuser/myapp"
+  - npm init
+  - npm install express -y
+  - nodejs index.js
+
+users:
+  - ssh_authorized_keys:
+    #key here
